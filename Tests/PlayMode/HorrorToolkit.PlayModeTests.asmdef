@@ -1,0 +1,11 @@
+{
+  "name": "HorrorToolkit.PlayModeTests",
+  "rootNamespace": "HorrorToolkit.Tests",
+  "references": [
+    "HorrorToolkit.Runtime"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ],
+  "autoReferenced": false
+}
