@@ -13,7 +13,7 @@
 4. Open Window > General > Test Runner, select PlayMode, and run the toolkit tests. Use normal game time (Time.timeScale = 1).
 5. Record the Unity version, Test Framework version, OS and result.
 
-The five test cases cover key consumption, inventory uniqueness, delayed light restoration, restoration on disable, and trigger tag filtering/reset. These tests are authored but have not yet been run in Unity.
+The eleven test cases cover key consumption, inventory uniqueness, delayed light restoration, restoration on disable, trigger tag filtering/reset, flashlight toggle/events, battery depletion and recharge, time-based drain, pickup behavior, disabling the flashlight, and clamped battery events. These tests are authored but have not yet been run in Unity.
 
 ## Manual checks
 
@@ -22,6 +22,7 @@ The five test cases cover key consumption, inventory uniqueness, delayed light r
 - Key: set up a player inventory and trigger pickup; collect a key, unlock matching door and check duplicate behavior.
 - Outage: assign initially enabled and disabled lights; verify early restoration, zero duration and disable mid-outage.
 - Trigger: enter with a player child collider; check one-shot mode and rearm. Use a trigger collider and Rigidbody.
+- Flashlight: configure a Spot Light and input button, check battery depletion, recharge without auto-starting, disable/re-enable the controller, and verify UI events. Test battery collection via a trigger and Rigidbody with full and partial charge.
 - LAN: install dependencies, import sample, configure NetworkManager/player prefab, connect two instances, disconnect and reconnect. Test two devices on the same LAN.
 
 No Unity Editor test or build results have been recorded yet.

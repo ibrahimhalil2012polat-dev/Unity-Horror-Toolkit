@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0
+
+- Add flashlight toggle, timed battery drain, charging, low-battery status and UnityEvents.
+- Add single-use battery pickups that remain available when the flashlight is full.
+- Add six Play Mode tests and flashlight setup documentation.
+
+Unity compilation and execution are pending.
+
 ## 0.2.0
 
 - Add configurable door locking, matching keys, optional consumption, state-change events and interaction API.
