@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.0
+
+- Add timed jumpscare presentation, optional sound, cancellation and UnityEvents.
+- Add one-shot or repeatable player-filtered jumpscare zones.
+- Add randomized, non-overlapping ambient audio scheduling with immediate-repeat avoidance.
+- Add six Play Mode tests and scare/audio setup documentation.
+
+Unity compilation and execution are pending.
+
 ## 0.3.0
 
 - Add flashlight toggle, timed battery drain, charging, low-battery status and UnityEvents.

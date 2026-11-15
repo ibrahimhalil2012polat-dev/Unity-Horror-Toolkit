@@ -8,6 +8,8 @@ MIT-licensed reusable Unity horror-game components. Independently implemented; n
 - Door events for audio, UI and puzzle integration.
 - Timed power outages that restore original light states, plus player-triggered blackout zones.
 - Rechargeable flashlight with battery drain, low-battery status and collectible batteries.
+- Timed jumpscare presentation with one-shot player triggers and optional sound.
+- Randomized ambient audio with repeat avoidance and configurable intervals.
 - Optional LAN multiplayer host/client sample (Netcode for GameObjects).
 
 ## Install
@@ -38,15 +40,19 @@ Wire the outage start and restore events to audio or visual effects. Original en
 
 Add FlashlightController to the player root and assign a child Spot Light. Configure battery life, starting charge and low-battery threshold. Connect Toggle() to your input action or UI button. Charge depletes only while on; empty batteries switch the light off. BatteryPickup restores charge on a trigger collision and is consumed only if charging succeeds. BatteryChanged exposes a normalized float for UI. See [flashlight setup](Documentation~/Flashlight.md) for detailed setup, audio events and limitations.
 
+## Jumpscares and ambient audio
+
+Add JumpscareController to an active manager, assign a separate visual and optional dedicated AudioSource/clip, and configure duration and volume. Use JumpscareTrigger for one-shot or repeatable player-triggered scares. RandomAmbiencePlayer schedules ambient clips with random delays and avoids immediate repeats when alternatives exist. See [scare and audio setup](Documentation~/ScaresAndAudio.md) for configuration and limitations. No visual or audio assets are bundled.
+
 ## LAN multiplayer
 
 Install Netcode for GameObjects and Unity Transport first (NGO 1.8+ API target), then import LAN Multiplayer from the package Samples tab. See [setup](Samples~/LanMultiplayer/README.md). This is a direct-IP LAN example, not a production online service. No room codes, relay, matchmaking, authentication, player cap or gameplay synchronization are included.
 
 ## Testing and contributions
 
-The package includes eleven Play Mode test cases for doors, inventory, outages, trigger filtering, flashlights and battery pickups. See [testing instructions](Documentation~/Testing.md) to enable and run them. Tests have been added but not executed in Unity yet. Reproducible bug reports and actual test results are welcome.
+The package includes seventeen Play Mode test cases for doors, inventory, outages, flashlights, battery pickups, scares, triggers and ambient clip selection. See [testing instructions](Documentation~/Testing.md) to enable and run them. Tests have been added but not executed in Unity yet. Reproducible bug reports and actual test results are welcome.
 
-Version 0.3.0 is an early development version, not a production-ready release.
+Version 0.4.0 is an early development version, not a production-ready release.
 
 ## License
 
