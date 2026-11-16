@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.0
+
+- Add EnemyVision with configurable range, field of view and obstacle layers.
+- Add EnemyBrain with NavMesh patrol, chase, noise investigation and timed search states.
+- Add state-change events, configurable speeds and six sensing/decision test cases.
+- Add NavMesh setup and AI integration guide.
+
+Unity compilation, test execution and navigation validation are pending.
+
 ## 0.4.0
 
 - Add timed jumpscare presentation, optional sound, cancellation and UnityEvents.

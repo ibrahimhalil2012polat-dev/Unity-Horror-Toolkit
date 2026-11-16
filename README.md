@@ -10,6 +10,7 @@ MIT-licensed reusable Unity horror-game components. Independently implemented; n
 - Rechargeable flashlight with battery drain, low-battery status and collectible batteries.
 - Timed jumpscare presentation with one-shot player triggers and optional sound.
 - Randomized ambient audio with repeat avoidance and configurable intervals.
+- NavMesh NPC with patrol, sight-based chase, explicit noise investigation and timed search.
 - Optional LAN multiplayer host/client sample (Netcode for GameObjects).
 
 ## Install
@@ -44,15 +45,19 @@ Add FlashlightController to the player root and assign a child Spot Light. Confi
 
 Add JumpscareController to an active manager, assign a separate visual and optional dedicated AudioSource/clip, and configure duration and volume. Use JumpscareTrigger for one-shot or repeatable player-triggered scares. RandomAmbiencePlayer schedules ambient clips with random delays and avoids immediate repeats when alternatives exist. See [scare and audio setup](Documentation~/ScaresAndAudio.md) for configuration and limitations. No visual or audio assets are bundled.
 
+## Enemy AI
+
+Bake a NavMesh and add EnemyBrain to an enemy with EnemyVision and NavMeshAgent. Assign the player, patrol waypoints, and obstacle layers. The brain patrols, chases visible targets, investigates reported game sounds and searches the last known position. Configure speeds, hearing radius, field of view and timers. See [enemy AI setup](Documentation~/EnemyAI.md) for setup, events, and limitations. No attack logic, models or animations are included.
+
 ## LAN multiplayer
 
 Install Netcode for GameObjects and Unity Transport first (NGO 1.8+ API target), then import LAN Multiplayer from the package Samples tab. See [setup](Samples~/LanMultiplayer/README.md). This is a direct-IP LAN example, not a production online service. No room codes, relay, matchmaking, authentication, player cap or gameplay synchronization are included.
 
 ## Testing and contributions
 
-The package includes seventeen Play Mode test cases for doors, inventory, outages, flashlights, battery pickups, scares, triggers and ambient clip selection. See [testing instructions](Documentation~/Testing.md) to enable and run them. Tests have been added but not executed in Unity yet. Reproducible bug reports and actual test results are welcome.
+The package includes twenty-three Play Mode test cases covering doors, inventory, outages, flashlights, scares, audio and NPC sensing/decision states. See [testing instructions](Documentation~/Testing.md) to enable and run them. Tests have been added but not executed in Unity yet. Reproducible bug reports and actual test results are welcome.
 
-Version 0.4.0 is an early development version, not a production-ready release.
+Version 0.5.0 is an early development version, not a production-ready release.
 
 ## License
 
