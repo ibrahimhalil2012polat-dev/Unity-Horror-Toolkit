@@ -6,6 +6,7 @@ MIT-licensed reusable Unity horror-game components. Independently implemented; n
 
 - Animated hinge doors, configurable locks, key inventory and collectible keys.
 - Door events for audio, UI and puzzle integration.
+- Camera-raycast E interaction for doors, manual key pickup and inspectable props, with UI prompt events.
 - Timed power outages that restore original light states, plus player-triggered blackout zones.
 - Rechargeable flashlight with battery drain, low-battery status and collectible batteries.
 - Timed jumpscare presentation with one-shot player triggers and optional sound.
@@ -20,6 +21,19 @@ Targets Unity 2022.3 LTS and newer. Unity Editor compilation and runtime testing
 `https://github.com/ibrahimhalil2012polat-dev/Unity-Horror-Toolkit.git`
 
 Alternatively, choose Add package from disk and select package.json in an extracted copy. The runtime has no third-party dependencies.
+
+## Player interaction
+
+Add `PlayerInteractor` to the player, assign its camera and put colliders on
+interactable objects. With legacy input enabled, E interacts automatically.
+Projects using the new Input System can invoke `TryInteract()` from an action
+callback. `PromptChanged` provides the current text for your UI; no UI package
+dependency is required.
+
+Add `DoorInteractable` to a door, `KeyPickupInteractable` beside `KeyPickup`
+for manual key collection (turn off Collect On Trigger), or
+`InspectableInteractable` for clues and items. See the
+[interaction guide](Documentation~/Interaction.md) for setup and limitations.
 
 ## Door and keys
 
@@ -55,9 +69,9 @@ Install Netcode for GameObjects and Unity Transport first (NGO 1.8+ API target),
 
 ## Testing and contributions
 
-The package includes twenty-three Play Mode test cases covering doors, inventory, outages, flashlights, scares, audio and NPC sensing/decision states. See [testing instructions](Documentation~/Testing.md) to enable and run them. Tests have been added but not executed in Unity yet. Reproducible bug reports and actual test results are welcome.
+The package includes twenty-nine Play Mode test cases covering doors, inventory, outages, flashlights, scares, audio and NPC sensing/decision states. See [testing instructions](Documentation~/Testing.md) to enable and run them. Tests have been added but not executed in Unity yet. Reproducible bug reports and actual test results are welcome.
 
-Version 0.5.0 is an early development version, not a production-ready release.
+Version 0.6.0 is an early development version, not a production-ready release.
 
 ## License
 

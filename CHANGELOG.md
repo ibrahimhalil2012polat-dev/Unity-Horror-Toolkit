@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.6.0
+
+- Add camera-raycast player interaction with configurable distance, layers, trigger handling and E key (legacy Input Manager).
+- Add prompt-change events and a public TryInteract API for the new Input System.
+- Integrate existing doors and keys through optional DoorInteractable and KeyPickupInteractable adapters.
+- Allow manual key collection while preserving existing automatic trigger collection by default.
+- Add generic IInteractable contract, inspectable clues with string events and one-shot mode.
+- Add six Play Mode tests and player interaction setup documentation.
+
+Unity compilation, test execution and input/UI validation are pending.
+
 ## 0.5.0
 
 - Add EnemyVision with configurable range, field of view and obstacle layers.
