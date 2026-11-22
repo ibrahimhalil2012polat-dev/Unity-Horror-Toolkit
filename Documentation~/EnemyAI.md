@@ -29,8 +29,8 @@ public void MakeNoise()
 }
 ```
 
-Call from a door event, footstep system, or other gameplay event. For multiple enemies, report the event to each relevant brain using your own dispatcher.
+For player footsteps, add `FootstepNoiseEmitter` to your player and assign EnemyBrain listeners; see the [footstep guide](FootstepNoise.md). For other gameplay events, call ReportNoise directly. For multiple enemies, report the event to each relevant brain using your own dispatcher.
 
 ## Limitations
 
-This is a single-target, local NPC prototype. It does not include attacks, damage, animations, models, automatic footstep detection, network authority, or persistence. Hearing is explicit distance-only gameplay logic. Movement needs a baked NavMesh and reachable destinations; dynamic doors need appropriate navigation setup. With no enabled agent on a NavMesh the brain can still update its state, but it does not move. The six added tests cover sensing and decision transitions without navigation; actual pathfinding requires an editor test scene. No Unity compilation or runtime tests have been executed yet.
+This is a single-target, local NPC prototype. It does not include attacks, damage, animations, models, network authority, or persistence. Hearing is explicit distance-only gameplay logic. Movement needs a baked NavMesh and reachable destinations; dynamic doors need appropriate navigation setup. With no enabled agent on a NavMesh the brain can still update its state, but it does not move. The six added tests cover sensing and decision transitions without navigation; actual pathfinding requires an editor test scene. No Unity compilation or runtime tests have been executed yet.
