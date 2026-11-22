@@ -8,8 +8,10 @@
 - Allow manual key collection while preserving existing automatic trigger collection by default.
 - Add generic IInteractable contract, inspectable clues with string events and one-shot mode.
 - Add six Play Mode tests and player interaction setup documentation.
+- Add FootstepNoiseEmitter with configurable walk/run intervals, loudness, grounded filtering and teleport safeguards.
+- Add manual footstep methods, audio events, six Play Mode tests and a footstep setup guide.
 
-Unity compilation, test execution and input/UI validation are pending.
+Unity compilation, test execution, input/UI and footstep/NavMesh validation are pending.
 
 ## 0.5.0
 

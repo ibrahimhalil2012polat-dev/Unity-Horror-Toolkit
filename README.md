@@ -12,6 +12,7 @@ MIT-licensed reusable Unity horror-game components. Independently implemented; n
 - Timed jumpscare presentation with one-shot player triggers and optional sound.
 - Randomized ambient audio with repeat avoidance and configurable intervals.
 - NavMesh NPC with patrol, sight-based chase, explicit noise investigation and timed search.
+- Player footsteps that report walking/running noise to enemy listeners with configurable loudness and intervals.
 - Optional LAN multiplayer host/client sample (Netcode for GameObjects).
 
 ## Install
@@ -63,13 +64,21 @@ Add JumpscareController to an active manager, assign a separate visual and optio
 
 Bake a NavMesh and add EnemyBrain to an enemy with EnemyVision and NavMeshAgent. Assign the player, patrol waypoints, and obstacle layers. The brain patrols, chases visible targets, investigates reported game sounds and searches the last known position. Configure speeds, hearing radius, field of view and timers. See [enemy AI setup](Documentation~/EnemyAI.md) for setup, events, and limitations. No attack logic, models or animations are included.
 
+## Footstep noise
+
+Attach `FootstepNoiseEmitter` to your player and assign the `EnemyBrain`
+listeners. Walking and running use different noise strengths, so running
+can alert an enemy at a greater distance. The component supports automatic
+movement-based steps or explicit animation events, plus optional sound events.
+See the [footstep noise guide](Documentation~/FootstepNoise.md).
+
 ## LAN multiplayer
 
 Install Netcode for GameObjects and Unity Transport first (NGO 1.8+ API target), then import LAN Multiplayer from the package Samples tab. See [setup](Samples~/LanMultiplayer/README.md). This is a direct-IP LAN example, not a production online service. No room codes, relay, matchmaking, authentication, player cap or gameplay synchronization are included.
 
 ## Testing and contributions
 
-The package includes twenty-nine Play Mode test cases covering doors, inventory, outages, flashlights, scares, audio and NPC sensing/decision states. See [testing instructions](Documentation~/Testing.md) to enable and run them. Tests have been added but not executed in Unity yet. Reproducible bug reports and actual test results are welcome.
+The package includes thirty-five Play Mode test cases covering doors, inventory, outages, flashlights, scares, audio and NPC sensing/decision states. See [testing instructions](Documentation~/Testing.md) to enable and run them. Tests have been added but not executed in Unity yet. Reproducible bug reports and actual test results are welcome.
 
 Version 0.6.0 is an early development version, not a production-ready release.
 

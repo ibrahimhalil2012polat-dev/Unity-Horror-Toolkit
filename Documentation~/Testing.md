@@ -13,7 +13,7 @@
 4. Open Window > General > Test Runner, select PlayMode, and run the toolkit tests. Use normal game time (Time.timeScale = 1).
 5. Record the Unity version, Test Framework version, OS and result.
 
-The twenty-nine test cases cover key consumption, inventory uniqueness, delayed light restoration, restoration on disable, trigger tag filtering/reset, flashlight toggle/events, battery depletion and recharge, time-based drain, pickup behavior, disabling the flashlight, clamped battery events, scare lifecycle and cleanup, one-shot player filtering, clip selection, ambience scheduler lifecycle, NPC sight range/angle, obstacle blocking, noise filtering and behaviour transitions, player interaction focus and prompts, door/key interaction, one-shot inspection, duplicate keys, and raycast occlusion/range. These tests are authored but have not yet been run in Unity.
+The thirty-five test cases cover key consumption, inventory uniqueness, delayed light restoration, restoration on disable, trigger tag filtering/reset, flashlight toggle/events, battery depletion and recharge, time-based drain, pickup behavior, disabling the flashlight, clamped battery events, scare lifecycle and cleanup, one-shot player filtering, clip selection, ambience scheduler lifecycle, NPC sight range/angle, obstacle blocking, noise filtering and behaviour transitions, player interaction focus and prompts, door/key interaction, one-shot inspection, duplicate keys, and raycast occlusion/range, and footstep distance, run/walk classification, grounded filtering, teleport suppression and step timer reset. These tests are authored but have not yet been run in Unity.
 
 ## Manual checks
 
@@ -30,6 +30,10 @@ The twenty-nine test cases cover key consumption, inventory uniqueness, delayed 
   Collect On Trigger disabled/enabled, duplicate keys, inspectable one-shot mode,
   UI clearing when looking away, colliders blocking the ray, and the new Input
   System action callback with legacy input disabled.
+- Footsteps: assign enemies to FootstepNoiseEmitter, move and run in Play Mode,
+  test near/far enemy hearing, jumping and teleport suppression. Try manual
+  animation-event steps with automatic detection disabled, and wire
+  WalkingStep/RunningStep to audio events.
 - LAN: install dependencies, import sample, configure NetworkManager/player prefab, connect two instances, disconnect and reconnect. Test two devices on the same LAN.
 
 No Unity Editor test or build results have been recorded yet.
