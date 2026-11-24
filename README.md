@@ -5,7 +5,7 @@ MIT-licensed reusable Unity horror-game components. Independently implemented; n
 ## Features
 
 - Animated hinge doors, configurable locks, key inventory and collectible keys.
-- Door events for audio, UI and puzzle integration.
+- Door events, optional unlock/blocked sounds, missing-key feedback and explicit key pickup for custom interactions.
 - Timed power outages that restore original light states, plus player-triggered blackout zones.
 - Rechargeable flashlight with battery drain, low-battery status and collectible batteries.
 - Timed jumpscare presentation with one-shot player triggers and optional sound.
@@ -28,6 +28,8 @@ Alternatively, choose Add package from disk and select package.json in an extrac
 3. For a locked door, set Start Locked and Required Key Id (for example, basement). Start Locked overrides Start Open.
 4. Add KeyInventory to the player's root GameObject. Add KeyPickup to a collectible with a 3D trigger collider and matching Key Id. Ensure at least one participant in the trigger interaction has a Rigidbody (kinematic is fine).
 5. Call door.Interact(playerInventory) from your player interaction script. It tries to unlock with the matching key and then toggles the door. Consume Key removes the key when unlocking, if selected.
+
+For optional audio, assign the door's Audio Source, Unlock Clip and Blocked Clip. Assign Pickup Clip on KeyPickup for a positional sound that survives pickup deactivation. Disable Collect On Trigger to collect keys only through your interaction script using pickup.TryCollect(playerInventory). Connect Missing Key and Collected events to UI or other scripts; they pass the key ID. See [key and lock setup](Documentation~/KeysAndLocks.md).
 
 Key IDs are trimmed and case-sensitive; inventory is in memory, with one entry per unique key. Pickups deactivate when a new key is collected. Duplicate keys are not collected. Lock() refuses to lock an open door; Unlock() is a scripted override. Opened/Closed events signal a target-state change, not completion of rotation. No collision avoidance, save/load or network synchronization is included.
 
@@ -55,9 +57,9 @@ Install Netcode for GameObjects and Unity Transport first (NGO 1.8+ API target),
 
 ## Testing and contributions
 
-The package includes twenty-three Play Mode test cases covering doors, inventory, outages, flashlights, scares, audio and NPC sensing/decision states. See [testing instructions](Documentation~/Testing.md) to enable and run them. Tests have been added but not executed in Unity yet. Reproducible bug reports and actual test results are welcome.
+The package includes twenty-five Play Mode test cases covering doors, inventory, outages, flashlights, scares, audio and NPC sensing/decision states. See [testing instructions](Documentation~/Testing.md) to enable and run them. Tests have been added but not executed in Unity yet. Reproducible bug reports and actual test results are welcome.
 
-Version 0.5.0 is an early development version, not a production-ready release.
+Version 0.6.0 is an early development version, not a production-ready release.
 
 ## License
 

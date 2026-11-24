@@ -76,6 +76,54 @@ namespace HorrorToolkit.Tests
             Assert.IsFalse(inventory.HasKey("a"));
         }
 
+        [Test]
+        public void PickupRejectsDuplicatesAndReportsSuccessfulCollectionOnce()
+        {
+            var player = NewObject("Player").AddComponent<KeyInventory>();
+            var go = NewObject("Pickup");
+            go.AddComponent<BoxCollider>().isTrigger = true;
+            var pickup = go.AddComponent<KeyPickup>();
+            SetField(pickup, "keyId", " basement ");
+            int calls = 0;
+            string received = null;
+            pickup.Collected.AddListener(id => { calls++; received = id; });
+            Assert.IsFalse(pickup.TryCollect(null));
+            Assert.IsTrue(player.AddKey("basement"));
+            Assert.IsFalse(pickup.TryCollect(player));
+            Assert.IsTrue(go.activeSelf);
+            player.RemoveKey("basement");
+            Assert.IsTrue(pickup.TryCollect(player));
+            Assert.IsTrue(player.HasKey("basement"));
+            Assert.IsTrue(pickup.IsCollected);
+            Assert.IsFalse(go.activeSelf);
+            Assert.IsFalse(pickup.TryCollect(player));
+            Assert.AreEqual(1, calls);
+            Assert.AreEqual("basement", received);
+        }
+
+        [Test]
+        public void LockedDoorReportsMissingKeyAndStopsAfterUnlock()
+        {
+            var door = NewObject("Door").AddComponent<DoorController>();
+            var player = NewObject("Player").AddComponent<KeyInventory>();
+            SetField(door, "requiredKeyId", " basement ");
+            door.TryLock();
+            var missing = new List<string>();
+            int unlocked = 0;
+            door.MissingKey.AddListener(id => missing.Add(id));
+            door.Unlocked.AddListener(() => unlocked++);
+            door.Interact(player);
+            door.Open();
+            CollectionAssert.AreEqual(new[] { "basement", "basement" }, missing);
+            Assert.IsTrue(door.IsLocked);
+            player.AddKey("basement");
+            door.Interact(player);
+            Assert.IsTrue(door.IsOpen);
+            Assert.AreEqual(1, unlocked);
+            Assert.AreEqual(2, missing.Count);
+            Assert.IsTrue(player.HasKey("basement"));
+        }
+
         [UnityTest]
         public IEnumerator OutageRestoresOriginalLightsAfterDelay()
         {

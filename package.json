@@ -1,6 +1,6 @@
 {
   "name": "com.clasicstudio.horror-toolkit",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "displayName": "Unity Horror Toolkit",
   "description": "Reusable horror game components, NPC behaviour and optional LAN sample.",
   "unity": "2022.3",

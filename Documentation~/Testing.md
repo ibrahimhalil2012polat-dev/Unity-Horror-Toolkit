@@ -13,13 +13,13 @@
 4. Open Window > General > Test Runner, select PlayMode, and run the toolkit tests. Use normal game time (Time.timeScale = 1).
 5. Record the Unity version, Test Framework version, OS and result.
 
-The twenty-three test cases cover key consumption, inventory uniqueness, delayed light restoration, restoration on disable, trigger tag filtering/reset, flashlight toggle/events, battery depletion and recharge, time-based drain, pickup behavior, disabling the flashlight, clamped battery events, scare lifecycle and cleanup, one-shot player filtering, clip selection, ambience scheduler lifecycle, NPC sight range/angle, obstacle blocking, noise filtering and behaviour transitions. These tests are authored but have not yet been run in Unity.
+The twenty-five test cases cover key consumption, inventory uniqueness, explicit pickup and missing-key feedback, delayed light restoration, restoration on disable, trigger tag filtering/reset, flashlight toggle/events, battery depletion and recharge, time-based drain, pickup behavior, disabling the flashlight, clamped battery events, scare lifecycle and cleanup, one-shot player filtering, clip selection, ambience scheduler lifecycle, NPC sight range/angle, obstacle blocking, noise filtering and behaviour transitions. These tests are authored but have not yet been run in Unity.
 
 ## Manual checks
 
 - Install in a clean Unity project and check the console for compilation errors.
 - Door: toggle repeatedly; test negative angles and initial locked/open states; verify physical rotation and events.
-- Key: set up a player inventory and trigger pickup; collect a key, unlock matching door and check duplicate behavior.
+- Key: set up a player inventory and trigger pickup; collect a key, unlock matching door and check duplicate behavior, explicit collection, blocked/unlock sounds and pickup audio.
 - Outage: assign initially enabled and disabled lights; verify early restoration, zero duration and disable mid-outage.
 - Trigger: enter with a player child collider; check one-shot mode and rearm. Use a trigger collider and Rigidbody.
 - Flashlight: configure a Spot Light and input button, check battery depletion, recharge without auto-starting, disable/re-enable the controller, and verify UI events. Test battery collection via a trigger and Rigidbody with full and partial charge.

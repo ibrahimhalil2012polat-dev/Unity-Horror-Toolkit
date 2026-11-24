@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.6.0
+
+- Extend existing key pickups with explicit collection, optional trigger collection, pickup sound and key-ID events.
+- Add optional door unlock and blocked sounds and a missing-key event for UI feedback.
+- Add two Play Mode tests and a key/lock integration guide.
+- Preserve existing key IDs, door methods and default trigger behavior.
+
+Unity compilation, audio validation and test execution are pending.
+
 ## 0.5.0
 
 - Add EnemyVision with configurable range, field of view and obstacle layers.

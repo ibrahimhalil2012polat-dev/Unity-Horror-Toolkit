@@ -19,6 +19,14 @@ namespace HorrorToolkit
         [SerializeField] private UnityEvent onUnlocked = new UnityEvent();
         [SerializeField] private UnityEvent onBlocked = new UnityEvent();
 
+        [Header("Optional audio and feedback")]
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip unlockClip;
+        [SerializeField] private AudioClip blockedClip;
+        [SerializeField] private UnityEvent<string> onMissingKey = new UnityEvent<string>();
+
+        public UnityEvent<string> MissingKey => onMissingKey;
+
         private Quaternion closedRotation;
         private Quaternion targetRotation;
         private bool initialized;
@@ -56,7 +64,7 @@ namespace HorrorToolkit
         public void SetOpen(bool open)
         {
             Initialize();
-            if (open && IsLocked) { onBlocked.Invoke(); return; }
+            if (open && IsLocked) { ReportBlocked(); return; }
             if (IsOpen == open) return;
             IsOpen = open;
             SetTarget();
@@ -87,6 +95,7 @@ namespace HorrorToolkit
             Initialize();
             if (!IsLocked) return;
             IsLocked = false;
+            PlayFeedback(unlockClip);
             onUnlocked.Invoke();
         }
 
@@ -100,12 +109,25 @@ namespace HorrorToolkit
             return true;
         }
 
+        private void PlayFeedback(AudioClip clip)
+        {
+            if (audioSource != null && clip != null)
+                audioSource.PlayOneShot(clip);
+        }
+
+        private void ReportBlocked()
+        {
+            PlayFeedback(blockedClip);
+            onBlocked.Invoke();
+            onMissingKey.Invoke(requiredKeyId == null ? string.Empty : requiredKeyId.Trim());
+        }
+
         public void Interact(KeyInventory inventory)
         {
             Initialize();
             if (IsLocked && !TryUnlock(inventory))
             {
-                onBlocked.Invoke();
+                ReportBlocked();
                 return;
             }
             Toggle();
