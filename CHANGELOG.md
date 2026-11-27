@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.7.0
+
+- Add camera-centered raycast interaction, reach, layer filtering and prompt events.
+- Integrate doors, keys and custom UnityEvents with optional one-shot behavior.
+- Add legacy E input and callable API for new input or mobile UI.
+- Add five Play Mode test cases and setup documentation.
+
+Unity compilation and test execution are pending.
+
 ## 0.6.0
 
 - Extend existing key pickups with explicit collection, optional trigger collection, pickup sound and key-ID events.

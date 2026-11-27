@@ -9,7 +9,7 @@
 
 ## Optional explicit collection
 
-Turn off Collect On Trigger on the pickup. Call pickup.TryCollect(playerInventory) from your raycast, button or input action after checking reach and line of sight. The method returns true only on a successful new key collection. The toolkit does not implement input, raycast or range checks itself. Duplicate or blank IDs are rejected without consuming the pickup.
+Turn off Collect On Trigger on the pickup. Call pickup.TryCollect(playerInventory) from your raycast, button or input action after checking reach and line of sight. The method returns true only on a successful new key collection. For the optional built-in raycast and input component, see [first-person interaction](Interaction.md). Duplicate or blank IDs are rejected without consuming the pickup.
 
 ## Sound and UI
 
